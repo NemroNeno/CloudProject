@@ -10,7 +10,7 @@ const doughnutOptions = {
   plugins: {
     legend: {
       labels: {
-        color: "white", 
+        color: "black",
       },
     },
   },
@@ -18,8 +18,8 @@ const doughnutOptions = {
 
 const ImagesHero = ({ storage, bandwidth, profile }) => {
 
-  const formattedStorage = (storage / (1024*1024)).toFixed(2);
-  const formattedBandwidth = (bandwidth / (1024*1024*(-1))).toFixed(2);
+  const formattedStorage = (storage / (1024 * 1024)).toFixed(2);
+  const formattedBandwidth = (bandwidth / (1024 * 1024 * (-1))).toFixed(2);
   console.log(formattedStorage, formattedBandwidth);
 
   const storageData = {
@@ -36,7 +36,7 @@ const ImagesHero = ({ storage, bandwidth, profile }) => {
     labels: ["Used Bandwidth (MB)", "Remaining Bandwidth (MB)"],
     datasets: [
       {
-        data: [formattedBandwidth,100 - formattedBandwidth],
+        data: [formattedBandwidth, 100 - formattedBandwidth],
         backgroundColor: ["#E0E0E0", "#36A2EB"],
       },
     ],
@@ -53,13 +53,13 @@ const ImagesHero = ({ storage, bandwidth, profile }) => {
         </p>
         <p className={styles.description}>
           Total Daily Bandwith: 100 Mb &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          Remaining Bandwith: {100-formattedBandwidth} Mb
+          Remaining Bandwith: {100 - formattedBandwidth} Mb
         </p>
       </div>
 
       <div className={styles.imageContainer}>
-    
-        <Doughnut data={storageData} options={doughnutOptions}  />
+
+        <Doughnut data={storageData} options={doughnutOptions} />
         <Doughnut data={bandwidthData} options={doughnutOptions} />
       </div>
     </div>

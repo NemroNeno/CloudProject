@@ -92,7 +92,7 @@ const ExistingVideos = ({ videos, onVideoDeleted }) => {
 
   return (
     <>
-      <LoadingBar color="#FFB700" ref={ref} />
+      <LoadingBar color="#FFBA00" height={10} ref={ref} />
 
       <div className={styles.imageGrid}>
         {videos.map((video, index) => (
@@ -103,13 +103,13 @@ const ExistingVideos = ({ videos, onVideoDeleted }) => {
 
             {/* Video Thumbnail */}
             <div className={styles.cardBody}>
-              <video 
+              <video
                 className={styles.fullScreenTrigger}
-                src={video.videoLink} 
-                onClick={() => openFullScreen(video)} 
-                muted 
-                loop 
-                autoPlay 
+                src={video.videoLink}
+                onClick={() => openFullScreen(video)}
+                muted
+                loop
+                autoPlay
               />
             </div>
 
@@ -173,6 +173,7 @@ const ExistingVideos = ({ videos, onVideoDeleted }) => {
           </div>
         )}
       </div>
+      <div className="p-5"></div>
     </>
   );
 };

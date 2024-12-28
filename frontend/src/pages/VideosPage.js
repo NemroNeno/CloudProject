@@ -3,6 +3,8 @@ import { useIsAuthenticated } from "react-auth-kit";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Videos from './../components/Videos/Videos';
+import Footer from "../components/Footer/Footer";
+
 const VideosPage = () => {
   const isAuthenticated = useIsAuthenticated();
   const navigate = useNavigate();
@@ -18,6 +20,7 @@ const VideosPage = () => {
         <>
           <MainNavigation />
           <Videos />
+          <Footer />
         </>
       ) : ""}
     </>

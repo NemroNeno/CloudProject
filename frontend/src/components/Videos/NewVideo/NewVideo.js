@@ -82,10 +82,6 @@ const NewVideo = ({ onVideoAdded }) => {
   };
 
 
-
-
-
-
   return (
     <>
       <LoadingBar color='#FFB700' ref={ref} />

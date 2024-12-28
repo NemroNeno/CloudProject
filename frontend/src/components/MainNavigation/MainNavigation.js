@@ -1,7 +1,6 @@
 // MainNavigation.jsx
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import classes from "./MainNavigation.module.css";
 import { useSignOut } from "react-auth-kit";
 import { useNavigate } from "react-router-dom";
 import { useIsAuthenticated } from "react-auth-kit";
@@ -26,13 +25,6 @@ const MainNavigation = () => {
   };
 
   const LogoutHandler = () => {
-    // Clear cache
-    if (window.location.protocol === 'http:') {
-      window.location.href = window.location.href.replace('http:', 'http:');
-    } else {
-      window.location.reload(true);
-    }
-
     // Clear cookies
     document.cookie.split(";").forEach((c) => {
       document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
@@ -50,117 +42,38 @@ const MainNavigation = () => {
 
   return (
     <>
-      <nav className={`${classes.blurredNavbar} ${classes.navFonts} navbar navbar-expand-lg p-1`}>
-        <div className="container-fluid">
-          <div className="d-flex align-items-center">
-            <NavLink to="/" className={` ${classes.logo}`}>
-              <img src="assetImages/icon.png" alt="logo img" />CloudReel
-            </NavLink>
+      <div className="container-fluid">
+        <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 border-bottom px-5">
+          <NavLink to="/" className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none fs-4 fw-bold">
+            <img src="assetImages/icon.png" alt="logo img" width="100" />
+          </NavLink>
 
-            <button
-              className={`navbar-toggler ${isOpen ? "active" : ""}`}
-              type="button"
-              onClick={toggleNavbar}
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
-          </div>
+          <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <li><NavLink to="/" className="nav-link px-2 link-secondary">Home</NavLink></li>
+            <li><NavLink to="/gallery" className="nav-link px-2 link-dark">Videos</NavLink></li>
+            {isAuthenticated() && (
+              <li><NavLink to="/profile" className="nav-link px-2 link-dark">Profile</NavLink></li>
+            )}
+          </ul>
 
-          <div className={`collapse navbar-collapse ${isOpen ? "show" : ""}`}>
-            <ul className="navbar-nav mx-auto">
-              <li className="nav-item">
-                <NavLink 
-                  to="/" 
-                  className="nav-link" 
-                  end
-                  style={({ isActive }) => ({
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: 'white',
-                    borderRadius: '10px',
-                    boxShadow: isActive ? '0 3px 0px rgba(31, 38, 135)' : 'none'
-                  })}
-                >
-                  <AiFillHome
-                    style={({ isActive }) => ({
-                      fontSize: '2rem',
-                      marginRight: '4px',
-                    })}
-                  /> Home
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink 
-                  to="/gallery"
-                  className="nav-link" 
-                  end
-                  style={({ isActive }) => ({
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: 'white',
-                    borderRadius: '10px',
-                    boxShadow: isActive ? '0 3px 0px rgba(31, 38, 135)' : 'none'
-                  })}
-                >
-                  <AiFillPicture
-                    style={({ isActive }) => ({
-                      fontSize: '2rem',
-                      marginRight: '4px'
-                    })}
-                  /> Videos
-                </NavLink>
-              </li>
-              {isAuthenticated() ? 
-              <li className="nav-item">
-                <NavLink 
-                  to="/profile" 
-                  className="nav-link" 
-                  end
-                  style={({ isActive }) => ({
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: 'white',
-                    borderRadius: '10px',
-                    boxShadow: isActive ? '0 3px 0px rgba(31, 38, 135)' : 'none'
-                  })}
-                >
-                  <FaUser
-                    style={({ isActive }) => ({
-                      fontSize: '2rem',
-                      marginRight: '4px'
-                    })}
-                  /> Profile
-                </NavLink>
-              </li>:null}
-            </ul>
-            <ul className="navbar-nav ml-auto">
-              {!isAuthenticated() ? (
-                <>
-                  <li className="nav-item mx-3">
-                    <NavLink to="login" className={classes.btn} end>
-                      <FaSignInAlt /> Login
-                    </NavLink>
-                  </li>
-                  <li className="nav-item">
-                    <NavLink to="register" className={classes.btn} end>
-                      <FaUserPlus /> Register
-                    </NavLink>
-                  </li>
-                </>
-              ) : (
-                <li className="nav-item">
-                  <NavLink className={classes.btn} onClick={LogoutHandler}>
-                  <FaSignOutAlt /> Logout
-                  </NavLink>
-                </li>
-              )}
-            </ul>
+          <div className="col-md-3 text-end">
+            {!isAuthenticated() ? (
+              <>
+                <a href="login" className="btn btn-outline-primary me-2">
+                  <FaSignInAlt /> Login
+                </a>
+                <a href="register" className="btn btn-primary">
+                  <FaUserPlus /> Register
+                </a>
+              </>
+            ) : (
+              <button className="btn btn-primary" onClick={LogoutHandler}>
+                <FaSignOutAlt /> Logout
+              </button>
+            )}
           </div>
-        </div>
-      </nav>
+        </header>
+      </div>
     </>
   );
 };

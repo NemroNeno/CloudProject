@@ -7,6 +7,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import MainNavigation from "../MainNavigation/MainNavigation";
 
 function Login(props) {
   const [focusState, setFocusState] = useState({
@@ -78,151 +79,67 @@ function Login(props) {
   }
 
   return (
-    <div
-    >
-      <div>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-        {/* Font Awesome */}
-        <link
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-          rel="stylesheet"
-        />
-        {/* Google Fonts */}
-        <link
-          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-          rel="stylesheet"
-        />
-        {/* MDB */}
-        <link
-          href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
-          rel="stylesheet"
-        />
-        <style
-          dangerouslySetInnerHTML={{
-            __html:
-              "\n      body,\n      html {\n        height: 100%;\n        margin: 0;\n      }\n\n      .container {\n        min-height: 100vh;\n        display: flex;\n        align-items: center;\n        justify-content: center;\n      }\n\n      .cascading-right {\n        margin-right: -50px;\n      }\n\n      @media (max-width: 991.98px) {\n        .cascading-right {\n          margin-right: 0;\n        }\n      }\n    ",
-          }}
-        />
-        {/* Section: Design Block */}
-        <section className="text-center text-lg-start">
-          <style
-            // dangerouslySetInnerHTML={{
-            //   __html:
-            //     "\n        .cascading-right {\n          margin-left: -50px;\n        }\n\n        @media (max-width: 991.98px) {\n          .cascading-right {\n            margin-left: 0;\n          }\n        }\n      ",
-            // }}
-            dangerouslySetInnerHTML={{
-              __html: `
-              body, html {
-                height: 100%;
-                margin: 0;
-              }
-        
-              .container {
-                min-height: 100vh;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-              }
-        
-              .cascading-right {
-                margin-left: -50px;
-              }
-        
-              @media (max-width: 991.98px) {
-                .cascading-right {
-                  margin-left: 0;
-                }
-              }
-    
-              .form-outline input:focus {
-                border-bottom: 2px solid #007bff;
-                box-shadow: none;
-              }
-        
-              .form-outline input:not(:focus) {
-                border-bottom: 1px solid #ced4da;
-              }
-            `,
-            }}
-          />
-          <div className="container">
-            <div className="row g-0 align-items-center">
-              <div className="col-lg-6 mb-5 mb-lg-0">
-                <img
-                  src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg"
-                  className="w-100 rounded-4 shadow-4"
-                  alt=""
-                />
-              </div>
-              <div className="col-lg-6 mb-5 mb-lg-0">
-                <div
-                  className="card cascading-right"
-                  style={{
-                    background: "hsla(0, 0%, 100%, 0.55)",
-                    backdropFilter: "blur(30px)",
-                  }}
-                >
-                  <div className="card-body p-5 shadow-5 text-center">
-                    <h2 className="fw-bold mb-5">Login now</h2>
+    <section className="vh-100">
+      <div className="container py-5 h-100">
+        <div className="row d-flex justify-content-center align-items-center h-100">
+          <div className="col col-xl-10">
+            <div className="card" style={{ borderRadius: "1rem" }}>
+              <div className="row g-0">
+                <div className="col-md-6 col-lg-5 d-none d-md-block">
+                  <img
+                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp"
+                    alt="login form"
+                    className="img-fluid"
+                    style={{ borderRadius: "1rem 0 0 1rem" }}
+                  />
+                </div>
+                <div className="col-md-6 col-lg-7 d-flex align-items-center">
+                  <div className="card-body p-4 p-lg-5 text-black">
                     <form onSubmit={formik.handleSubmit}>
-                      <div className="row">
-                        <div className="col-md-6 mb-4">
-                          <div className="form-outline">
-                            <input
-                              name="email"
-                              value={formik.values.email}
-                              onChange={formik.handleChange}
-                              type="email"
-                              onBlur={() => handleInputBlur("email")}
-                              onFocus={() => handleInputFocus("email")}
-                              id="form3Example1"
-                              className="form-control"
-                              style={{
-                                width: '20rem'
-                              }}
-                            />
-                            {(!formik.values.email || focusState.email) && (
-                              <label
-                                className="form-label"
-                                htmlFor="form3Example1"
-                              >
-                                Email
-                              </label>
-                            )}
-                          </div>
-                        </div>
+                      <div className="d-flex align-items-center mb-3 pb-1">
+                        <i className="fas fa-cubes fa-2x me-3" style={{ color: "#ff6219" }}></i>
+                        <span className="h1 fw-bold mb-0">CloudReel</span>
+                      </div>
+
+                      <h5 className="fw-normal mb-3 pb-3" style={{ letterSpacing: "1px" }}>
+                        Sign into your account
+                      </h5>
+
+                      <div className="form-outline mb-4">
+                        <input
+                          type="email"
+                          id="form2Example17"
+                          className="form-control form-control-lg"
+                          name="email"
+                          value={formik.values.email}
+                          onChange={formik.handleChange}
+                          onBlur={() => handleInputBlur("email")}
+                          onFocus={() => handleInputFocus("email")}
+                        />
+                        <label className="form-label" htmlFor="form2Example17">
+                          Email address
+                        </label>
                       </div>
 
                       <div className="form-outline mb-4">
                         <input
+                          type={showPassword ? "text" : "password"}
+                          id="form2Example27"
+                          className="form-control form-control-lg"
                           name="password"
                           value={formik.values.password}
                           onChange={formik.handleChange}
                           onBlur={() => handleInputBlur("password")}
                           onFocus={() => handleInputFocus("password")}
-                          type={showPassword ? "text" : "password"}
-                          id="form3Example3"
-                          className="form-control"
-
-                          style={{
-                            width: '20rem'
-                          }}
-
                         />
-
-                        {(!formik.values.password || focusState.password) && (
-                          <label className="form-label" htmlFor="form3Example3">
-                            Password
-                          </label>
-                        )}
-
+                        <label className="form-label" htmlFor="form2Example27">
+                          Password
+                        </label>
                         <span className="eye-icon-container form-outline col-2"
                           style={{
                             position: 'relative',
-                            top: '-2rem',
-                            left: '4rem'
+                            top: '-2.2rem',
+                            left: '27rem'
                           }}>
                           <FontAwesomeIcon
                             icon={showPassword ? faEye : faEyeSlash}
@@ -230,120 +147,45 @@ function Login(props) {
                             onClick={togglePasswordVisibility}
                           />
                         </span>
-
                       </div>
 
-                      <div className="form-check d-flex justify-content-center mb-4">
-                        <label
-                          className="form-check-label"
-                          htmlFor="form2Example33"
+                      <div className="pt-1 mb-4">
+                        <button
+                          className="btn btn-dark btn-lg btn-block"
+                          type="submit"
+                          disabled={formik.isSubmitting}
                         >
-                          🔒 Credentials are secure and encrypted
-                        </label>
+                          {formik.isSubmitting ? "Logging in..." : "Login"}
+                        </button>
                       </div>
-                      {/* Submit button */}
-                      <button
-                        type="submit"
-                        className="btn btn-primary btn-block mb-4"
-                        disabled={formik.isSubmitting}
-                      >
-                        {formik.isSubmitting ? "Logging in..." : "Login"}
-                      </button>
 
-                      <div className="text-center">
-                        <p>
-                          Don't have an account?{" "}
-                          <span
-                            style={{
-                              color: "#007bff",
-                              cursor: "pointer",
-                              textDecoration: "underline",
-                            }}
-                            onClick={registerHandler}
-                          >
-                            Click here
-                          </span>
-                        </p>
-                      </div>
+                      <a className="small text-muted" href="#!">
+                        Forgot password?
+                      </a>
+                      <p className="mb-5 pb-lg-2" style={{ color: "#393f81" }}>
+                        Don't have an account?{" "}
+                        <span
+                          style={{ color: "#393f81", cursor: "pointer", textDecoration: "underline" }}
+                          onClick={registerHandler}
+                        >
+                          Register here
+                        </span>
+                      </p>
+                      <a href="#!" className="small text-muted">
+                        Terms of use.
+                      </a>
+                      <a href="#!" className="small text-muted">
+                        Privacy policy
+                      </a>
                     </form>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
       </div>
-    </div>
-
-    // <div className={`${classes.container}`}>
-    //   <form
-    //     onSubmit={formik.handleSubmit}
-    //     className={` ${classes["border"]} ${classes["rounded"]} ${classes["m-5"]} ${classes["bg-light"]} ${classes["p-4"]} ${classes["square-form"]} pb-5 pt-2 px-5`}
-    //   >
-    //     <p className="text-danger">{error}</p>
-    //     <h3 className="mb-3">Login</h3>
-    //     <div className="mb-3">
-    //       <input
-    //         className={`form-control ${formik.touched.email && formik.errors.email ? "is-invalid" : ""
-    //           }`}
-    //         name="email"
-    //         value={formik.values.email}
-    //         onChange={formik.handleChange}
-    //         placeholder="Email"
-    //         type="email"
-    //       />
-    //       <div className="invalid-feedback">
-    //         {formik.touched.email && formik.errors.email}
-    //       </div>
-    //     </div>
-    //     <div className="mb-3">
-    //       <input
-    //         className={`form-control ${formik.touched.password && formik.errors.password
-    //           ? "is-invalid"
-    //           : ""
-    //           }`}
-    //         name="password"
-    //         value={formik.values.password}
-    //         onChange={formik.handleChange}
-    //         placeholder="Password"
-    //         type="password"
-    //       />
-    //       <div className="invalid-feedback">
-    //         {formik.touched.password && formik.errors.password}
-    //       </div>
-    //     </div>
-    //     <button
-    //       className="btn btn-primary"
-    //       type="submit"
-    //       disabled={formik.isSubmitting}
-    //       style={{ width: '100%' }}
-    //     >
-    //       {formik.isSubmitting ? "Logging in..." : "Login"}
-    //     </button>
-    //     {/* <button
-    //       className="btn btn-secondary"
-    //       type="button"
-    //       disabled={formik.isSubmitting}
-    //       onClick={registerHandler}
-    //     >Register</button> */}
-
-    //     <p style={{ fontSize: '14px', textAlign: 'center', marginTop: '1rem' }}>
-    //       Don't have an account?
-    //       <a
-    //         href=""
-    //         onClick={registerHandler}
-    //         // disabled={formik.isSubmitting}
-    //         style={{ color: '#007bff', textDecoration: 'none' }}
-    //       >
-    //         &nbsp; Sign Up.
-    //       </a>
-    //     </p>
-
-    //     <p class="leading-normal mt-2 flex items-center justify-center">
-    //      &#x1F512; Credentials are secure and encrypted</p>
-
-    //   </form>
-    // </div>
+    </section>
   );
 }
 

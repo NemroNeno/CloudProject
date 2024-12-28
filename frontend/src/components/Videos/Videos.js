@@ -21,8 +21,6 @@ const Videos = () => {
     <>
       <NewVideo/>
       <ExistingVideos videos={videos} />
-      <Footer/>
-
     </>
   );
 };

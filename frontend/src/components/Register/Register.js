@@ -7,7 +7,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-
+import MainNavigation from "../MainNavigation/MainNavigation";
 
 function Register(props) {
   const [focusState, setFocusState] = useState({
@@ -65,332 +65,126 @@ function Register(props) {
   };
 
   return (
-    <div
-    >
-      <div>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-        {/* Font Awesome */}
-        <link
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-          rel="stylesheet"
-        />
-        {/* Google Fonts */}
-        <link
-          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-          rel="stylesheet"
-        />
-        {/* MDB */}
-        <link
-          href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.1.0/mdb.min.css"
-          rel="stylesheet"
-        />
-        <style
-          //   dangerouslySetInnerHTML={{
-          //     __html:
-          //       "\n      body,\n      html {\n        height: 100%;\n        margin: 0;\n      }\n\n      .container {\n        min-height: 100vh;\n        display: flex;\n        align-items: center;\n        justify-content: center;\n      }\n\n      .cascading-right {\n        margin-right: -50px;\n      }\n\n      @media (max-width: 991.98px) {\n        .cascading-right {\n          margin-right: 0;\n        }\n      }\n    ",
-          //   }
-          // }
-          dangerouslySetInnerHTML={{
-            __html: `
-          body, html {
-            height: 100%;
-            margin: 0;
-          }
-    
-          .container {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-    
-          .cascading-right {
-            margin-right: -50px;
-          }
-    
-          @media (max-width: 991.98px) {
-            .cascading-right {
-              margin-right: 0;
-            }
-          }
-
-          .form-outline input:focus {
-            border-bottom: 2px solid #007bff;
-            box-shadow: none;
-          }
-    
-          .form-outline input:not(:focus) {
-            border-bottom: 1px solid #ced4da;
-          }
-        `,
-          }}
-        />
-        {/* Section: Design Block */}
-        <section className="text-center text-lg-start">
-          <style
-            dangerouslySetInnerHTML={{
-              __html:
-                "\n        .cascading-right {\n          margin-right: -50px;\n        }\n\n        @media (max-width: 991.98px) {\n          .cascading-right {\n            margin-right: 0;\n          }\n        }\n      ",
-            }}
-          />
-          {/* Jumbotron */}
-          <div className="container">
-            <div className="row g-0 align-items-center">
-              <div className="col-lg-6 mb-5 mb-lg-0">
-                <div
-                  className="card cascading-right"
-                  style={{
-                    background: "hsla(0, 0%, 100%, 0.55)",
-                    backdropFilter: "blur(30px)",
-                  }}
-                >
-                  <div className="card-body p-5 shadow-5 text-center">
-                    <h2 className="fw-bold mb-5">Sign up now</h2>
+    <section className="vh-100">
+      <div className="container py-5 h-100">
+        <div className="row d-flex justify-content-center align-items-center h-100">
+          <div className="col col-xl-10">
+            <div className="card" style={{ borderRadius: "1rem" }}>
+              <div className="row g-0">
+                <div className="col-md-6 col-lg-5 d-none d-md-block">
+                  <img
+                    src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp"
+                    alt="register form"
+                    className="img-fluid"
+                    style={{ borderRadius: "1rem 0 0 1rem" }}
+                  />
+                </div>
+                <div className="col-md-6 col-lg-7 d-flex align-items-center">
+                  <div className="card-body p-4 p-lg-5 text-black">
                     <form onSubmit={formik.handleSubmit}>
-                      <div className="row">
-                        <div className="mb-4 col-8">
-                          <div className="form-outline">
-                            <input
-                              name="username"
-                              value={formik.values.username}
-                              onChange={formik.handleChange}
-                              onBlur={() => handleInputBlur("username")}
-                              onFocus={() => handleInputFocus("username")}
-                              type="username"
-                              id="form3Example1"
-                              className="form-control"
-                              style={{
-                                width: '20rem'
-                              }}
-                            />
-
-                            {(!formik.values.username ||
-                              focusState.username) && (
-                                <label
-                                  className="form-label"
-                                  htmlFor="form3Example1"
-                                >
-                                  User name
-                                </label>
-                              )}
-
-                            {/* <label className="form-label" htmlFor="form3Example1">
-                            User name
-                          </label> */}
-                          </div>
-                        </div>
+                      <div className="d-flex align-items-center mb-3 pb-1">
+                        <i className="fas fa-cubes fa-2x me-3" style={{ color: "#ff6219" }}></i>
+                        <span className="h1 fw-bold mb-0">CloudReel</span>
                       </div>
-                      {/* Email input */}
-                      <div className="form-outline mb-4 col-8">
+
+                      <h5 className="fw-normal mb-3 pb-3" style={{ letterSpacing: "1px" }}>
+                        Create your account
+                      </h5>
+
+                      <div className="form-outline mb-4">
                         <input
+                          type="text"
+                          id="form3Example1"
+                          className="form-control form-control-lg"
+                          name="username"
+                          value={formik.values.username}
+                          onChange={formik.handleChange}
+                          onBlur={() => handleInputBlur("username")}
+                          onFocus={() => handleInputFocus("username")}
+                        />
+                        <label className="form-label" htmlFor="form3Example1">
+                          Username
+                        </label>
+                      </div>
+
+                      <div className="form-outline mb-4">
+                        <input
+                          type="email"
+                          id="form3Example3"
+                          className="form-control form-control-lg"
                           name="email"
                           value={formik.values.email}
                           onChange={formik.handleChange}
                           onBlur={() => handleInputBlur("email")}
                           onFocus={() => handleInputFocus("email")}
-                          type="email"
-                          id="form3Example3"
-                          className="form-control"
-                          style={{
-                            width: '20rem'
-                          }}
                         />
-
-                        {(!formik.values.email || focusState.email) && (
-                          <label className="form-label" htmlFor="form3Example3">
-                            Email address
-                          </label>
-                        )}
-
-                        {/* <label className="form-label" htmlFor="form3Example3">
-                        Email address
-                      </label> */}
-                      </div>
-
-                      {/* Password input */}
-                      <div className="form-outline mb-4 row">
-                        <span className="col-8">
-                          <input
-                            name="password"
-                            value={formik.values.password}
-                            onChange={formik.handleChange}
-                            onBlur={() => handleInputBlur("password")}
-                            onFocus={() => handleInputFocus("password")}
-                            type={showPassword ? "text" : "password"}
-                            id="form3Example4"
-                            className="form-control"
-                            style={{
-                              width: '20rem'
-                            }}
-                          />
-                          {(!formik.values.password || focusState.password) && (
-                            <label className="form-label mx-3 d-flex justify-content-between" htmlFor="form3Example4">
-                              Password
-                            </label>
-                          )}
-
-                          <span className="eye-icon-container form-outline col-2"
-                            style={{
-                              position: 'relative',
-                              top: '-2rem',
-                              left: '10rem'
-                            }}>
-                            <FontAwesomeIcon
-                              icon={showPassword ? faEye : faEyeSlash}
-                              className="eye-icon"
-                              onClick={togglePasswordVisibility}
-                            />
-                          </span>
-
-                        </span>
-                        {/* <span className="eye-icon-container form-outline col-2" >
-                        <FontAwesomeIcon
-                          icon={showPassword ? faEye : faEyeSlash}
-                          className="eye-icon"
-                          onClick={togglePasswordVisibility}
-                        />
-                        </span> */}
-                        <div>
-                          {formik.touched.username && formik.errors.username}
-                        </div>
-                      </div>
-                      <div className="form-check d-flex justify-content-center mb-4">
-                        <label
-                          className="form-check-label"
-                          htmlFor="form2Example33"
-                        >
-                          Create your account now!
+                        <label className="form-label" htmlFor="form3Example3">
+                          Email address
                         </label>
                       </div>
-                      {/* Submit button */}
-                      <button
-                        type="submit"
-                        className="btn btn-primary btn-block mb-4"
-                        disabled={formik.isSubmitting}
-                      >
-                        {formik.isSubmitting ? "Registering..." : "Register"}
-                      </button>
-                      {/* Register buttons */}
-                      <div className="text-center">
-                        <p>
-                          Already have an account?{" "}
-                          <span
-                            style={{
-                              color: "#007bff",
-                              cursor: "pointer",
-                              textDecoration: "underline",
-                            }}
-                            onClick={loginHandler}
-                          >
-                            Click here
-                          </span>
-                        </p>
+
+                      <div className="form-outline mb-4">
+                        <input
+                          type={showPassword ? "text" : "password"}
+                          id="form3Example4"
+                          className="form-control form-control-lg"
+                          name="password"
+                          value={formik.values.password}
+                          onChange={formik.handleChange}
+                          onBlur={() => handleInputBlur("password")}
+                          onFocus={() => handleInputFocus("password")}
+                        />
+                        <label className="form-label" htmlFor="form3Example4">
+                          Password
+                        </label>
+                        <span className="eye-icon-container form-outline col-2"
+                          style={{
+                            position: 'relative',
+                            top: '-2.2rem',
+                            left: '27rem'
+                          }}>
+                          <FontAwesomeIcon
+                            icon={showPassword ? faEye : faEyeSlash}
+                            className="eye-icon"
+                            onClick={togglePasswordVisibility}
+                          />
+                        </span>
                       </div>
+
+                      <div className="pt-1 mb-4">
+                        <button
+                          className="btn btn-dark btn-lg btn-block"
+                          type="submit"
+                          disabled={formik.isSubmitting}
+                        >
+                          {formik.isSubmitting ? "Registering..." : "Register"}
+                        </button>
+                      </div>
+
+                      <p className="mb-5 pb-lg-2" style={{ color: "#393f81" }}>
+                        Already have an account?{" "}
+                        <span
+                          style={{ color: "#393f81", cursor: "pointer", textDecoration: "underline" }}
+                          onClick={loginHandler}
+                        >
+                          Login here
+                        </span>
+                      </p>
+                      <a href="#!" className="small text-muted">
+                        Terms of use.
+                      </a>
+                      <a href="#!" className="small text-muted">
+                        Privacy policy
+                      </a>
                     </form>
                   </div>
                 </div>
               </div>
-              <div className="col-lg-6 mb-5 mb-lg-0">
-                <img
-                  src="https://mdbootstrap.com/img/new/ecommerce/vertical/004.jpg"
-                  className="w-100 rounded-4 shadow-4"
-                  alt=""
-                />
-              </div>
             </div>
           </div>
-        </section>
+        </div>
       </div>
-    </div>
-
-    // <div className={`${classes.container}`}>
-    //   <form
-    //     onSubmit={formik.handleSubmit}
-    //     className={` ${classes["border"]} ${classes["rounded"]} ${classes["m-5"]} ${classes["bg-light"]} ${classes["p-4"]} ${classes["square-form"]} pb-5 pt-2 px-5`}
-    //   >
-    //     <p className="text-danger">{error}</p>
-    //     <h3 className="mb-3">Register</h3>
-    //     <div className="mb-3">
-    //       <input
-    //         className={`form-control ${
-    //           formik.touched.username && formik.errors.username ? "is-invalid" : ""
-    //         }`}
-    //         name="username"
-    //         value={formik.values.username}
-    //         onChange={formik.handleChange}
-    //         placeholder="Username"
-    //         type="username"
-    //       />
-    //       <div className="invalid-feedback">
-    //         {formik.touched.username && formik.errors.username}
-    //       </div>
-    //     </div>
-    //     <div className="mb-3">
-    //       <input
-    //         className={`form-control ${
-    //           formik.touched.email && formik.errors.email ? "is-invalid" : ""
-    //         }`}
-    //         name="email"
-    //         value={formik.values.email}
-    //         onChange={formik.handleChange}
-    //         placeholder="Email"
-    //         type="email"
-    //       />
-    //       <div className="invalid-feedback">
-    //         {formik.touched.email && formik.errors.email}
-    //       </div>
-    //     </div>
-    //     <div className="mb-3">
-    //       <input
-    //         className={`form-control ${
-    //           formik.touched.password && formik.errors.password
-    //             ? "is-invalid"
-    //             : ""
-    //         }`}
-    //         name="password"
-    //         value={formik.values.password}
-    //         onChange={formik.handleChange}
-    //         placeholder="Password"
-    //         type="password"
-    //       />
-    //       <div className="invalid-feedback">
-    //         {formik.touched.password && formik.errors.password}
-    //       </div>
-    //     </div>
-    //     <button
-    //       className="btn btn-primary"
-    //       type="submit"
-    //       disabled={formik.isSubmitting}
-    //       style={{ width: '100%' }}
-    //     >
-    //       {formik.isSubmitting ? "Registering..." : "Register"}
-    //     </button>
-    //     {/* <button
-    //       className="btn btn-secondary"
-    //       type="button"
-    //       disabled={formik.isSubmitting}
-    //       onClick={loginHandler}
-    //     >Login</button> */}
-
-    //   <p style={{ fontSize: '14px', textAlign: 'center', marginTop: '1rem' }}>
-    //       Already have an account?
-    //       <a
-    //         href=""
-    //         onClick={loginHandler}
-    //         // disabled={formik.isSubmitting}
-    //         style={{ color: '#007bff', textDecoration: 'none' }}
-    //       >
-    //         &nbsp; Sign In.
-    //       </a>
-    //     </p>
-
-    //     <p class="leading-normal mt-2 flex items-center justify-center">
-    //      &#x1F512; Credentials are secure and encrypted</p>
-
-    //   </form>
-    // </div>
+    </section>
   );
 }
 
