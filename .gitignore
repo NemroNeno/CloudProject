@@ -1,2 +1,3 @@
 # Exclude node_modules folders recursively from all directories
 node_modules/
+.env
