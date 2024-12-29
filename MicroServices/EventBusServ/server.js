@@ -12,8 +12,11 @@ require("dotenv").config();
 app.use(bodyParser.json());
 app.post("/events", (req, res) => {
   const event = req.body;
+
   try {
+    console.log(`${process.env.AUTH_SERV}/events`)
     axios.post(`${process.env.AUTH_SERV}/events`, event).catch((err) => {
+
       console.log(err.message);
     });
 } catch (error) {

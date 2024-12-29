@@ -17,10 +17,12 @@ function verifyToken(req, res, next) {
     return res.status(401).json({ message: "Authorization token missing" });
 
   try {
+    console.log(process.env.JWT_SECRET)
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = decoded;
     next();
   } catch (err) {
+   
     return res.status(401).json({ message: "Invalid token" });
   }
 }
@@ -48,7 +50,7 @@ router.get("/:userId", verifyToken, async (req, res) => {
 
 
 
-  router.post("/add/:userId", async (req, res) => {
+  router.post("/add/:userId",verifyToken, async (req, res) => {
     const form = new formidable.IncomingForm();
     const clientIp = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
 
@@ -165,7 +167,7 @@ router.get("/:userId", verifyToken, async (req, res) => {
 
 
 
-  router.delete("/:userId/:videoId", async (req, res) => {
+  router.delete("/:userId/:videoId",verifyToken,async (req, res) => {
     const clientIp = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
     const userId = req.params.userId;
     const videoId = req.params.videoId;
