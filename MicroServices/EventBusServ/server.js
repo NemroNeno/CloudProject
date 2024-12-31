@@ -13,9 +13,15 @@ app.use(bodyParser.json());
 app.post("/events", (req, res) => {
   console.log("Received Event", req.body);
   const event = req.body;
+
   try {
+<<<<<<< HEAD
     console.log(`${process.env.AUTH_SERV}/events`);
+=======
+    console.log(`${process.env.AUTH_SERV}/events`)
+>>>>>>> 13137efd37cf28d3975c5d42b68bf83ab54b1432
     axios.post(`${process.env.AUTH_SERV}/events`, event).catch((err) => {
+
       console.log(err.message);
     });
 } catch (error) {
