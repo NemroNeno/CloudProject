@@ -9,7 +9,7 @@ require("dotenv").config();
 app.use(bodyParser.json());
 app.use(cors());
 
-app.post("/events", async (req, res) => {
+app.post("/storage/events", async (req, res) => {
   console.log("Event Received:", req.body.type);
   const { type, data } = req.body;
 

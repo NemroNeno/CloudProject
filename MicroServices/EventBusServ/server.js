@@ -11,8 +11,10 @@ app.use(
 require("dotenv").config();
 app.use(bodyParser.json());
 app.post("/events", (req, res) => {
+  console.log("Received Event", req.body);
   const event = req.body;
   try {
+    console.log(`${process.env.AUTH_SERV}/events`);
     axios.post(`${process.env.AUTH_SERV}/events`, event).catch((err) => {
       console.log(err.message);
     });
@@ -20,6 +22,7 @@ app.post("/events", (req, res) => {
   console.log(error);
 }
   try {
+    console.log(`${process.env.STORAGE_SERV}/events`);
   axios.post(`${process.env.STORAGE_SERV}/events`, event).catch((err) => {
                             console.log(err.message);
 });
@@ -27,6 +30,7 @@ app.post("/events", (req, res) => {
   console.log(error);
 }
   try {
+    console.log(`${process.env.GALLERY_SERV}/events`);
   axios.post(`${process.env.GALLERY_SERV}/events`, event).catch((err) => {
                             console.log(err.message);
 });
@@ -34,6 +38,7 @@ app.post("/events", (req, res) => {
   console.log(error);
 }
   try {
+    console.log(`${process.env.LOG_SERV}/events`);
   axios.post(`${process.env.LOG_SERV}/events`, event).catch((err) => {
                         console.log(err.message);
 });
@@ -41,6 +46,7 @@ app.post("/events", (req, res) => {
   console.log(error);
 }
   try {
+    console.log(`${process.env.USAGE_SERV}/events`);
   axios.post(`${process.env.USAGE_SERV}/events`, event).catch((err) => {
                           console.log(err.message);
 });
@@ -48,6 +54,7 @@ app.post("/events", (req, res) => {
   console.log(error);
 }
   try {
+    console.log(`${process.env.QUERY_SERV}/events`);
   axios.post(`${process.env.QUERY_SERV}/events`, event).catch((err) => {
                           console.log(err.message);
 });

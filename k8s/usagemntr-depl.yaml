@@ -12,9 +12,11 @@ spec:
       labels:
         app: usagemntr
     spec:
+      imagePullSecrets:
+        - name: gcr-json-key
       containers:
         - name: usagemntr
-          image: us.gcr.io/atomic-409916/usagemntr
+          image: gcr.io/forward-dream-436005-g7/usagemntrserv:61b81a5-dirty@sha256:fbd1bbd6dea6c8c3c74f34deb12ad8f5503801c0df4eec7cebbd64cc0d85e88d
           ports:
             - containerPort: 4004
 ---

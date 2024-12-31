@@ -48,7 +48,7 @@ router.get("/:userId", verifyToken, async (req, res) => {
 
 
 
-  router.post("/add/:userId", async (req, res) => {
+  router.post("/add/:userId", verifyToken, async (req, res) => {
     const form = new formidable.IncomingForm();
     const clientIp = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
 
@@ -165,7 +165,7 @@ router.get("/:userId", verifyToken, async (req, res) => {
 
 
 
-  router.delete("/:userId/:videoId", async (req, res) => {
+  router.delete("/:userId/:videoId",verifyToken, async (req, res) => {
     const clientIp = req.headers["x-forwarded-for"] || req.connection.remoteAddress;
     const userId = req.params.userId;
     const videoId = req.params.videoId;

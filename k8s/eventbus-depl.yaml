@@ -12,9 +12,12 @@ spec:
       labels:
         app: eventbus
     spec:
+      imagePullSecrets:
+        - name: gcr-json-key
       containers:
         - name: eventbus
-          image: us.gcr.io/atomic-409916/eventbus
+          image: gcr.io/forward-dream-436005-g7/eventbusserv@sha256:13d7773038f19890f854a817b12d2fe1fe23bbd8af758ff34406669f343f67a0
+          imagePullPolicy: Always
           ports:
             - containerPort: 4010
 ---

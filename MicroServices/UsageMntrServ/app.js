@@ -11,7 +11,7 @@ app.use(cors());
 const cron = require("node-cron");
 
 
-app.post("/events", async (req, res) => {
+app.post("/usagemonitoring/events", async (req, res) => {
   console.log("Event Received:", req.body.type);
   const { type, data } = req.body;
   if (type === "UserCreated") {

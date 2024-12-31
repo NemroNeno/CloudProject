@@ -25,6 +25,7 @@
     "react-auth-kit": "^2.12.6",
     "react-bootstrap": "^2.8.0",
     "react-chartjs-2": "^5.2.0",
+    "react-complete-guide": "file:",
     "react-dom": "^18.0.0",
     "react-icons": "^4.12.0",
     "react-redux": "^8.1.1",

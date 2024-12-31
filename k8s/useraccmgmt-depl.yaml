@@ -12,9 +12,11 @@ spec:
       labels:
         app: useraccmgmt
     spec:
+      imagePullSecrets:
+        - name: gcr-json-key
       containers:
         - name: useraccmgmt
-          image: us.gcr.io/atomic-409916/useraccmgmt
+          image: gcr.io/forward-dream-436005-g7/useraccmgmtserv:61b81a5-dirty@sha256:bbb41a315f26b68b771d8a6b62ec73ab65774bb84bfac287ea3e13818ff59000
           ports:
             - containerPort: 4000
 ---
@@ -31,5 +33,3 @@ spec:
     protocol: TCP
     port: 4000
     targetPort: 4000
-          
-                

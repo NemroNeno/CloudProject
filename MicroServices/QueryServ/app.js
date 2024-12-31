@@ -14,7 +14,7 @@ const queries = require("./routes/queries");
 
 app.use("/queries", queries);
 
-app.post("/events", async (req, res) => {
+app.post("/queries/events", async (req, res) => {
   console.log("Event Received:", req.body.type);
   const { type, data } = req.body;
   if (type === "UserCreated") {

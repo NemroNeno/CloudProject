@@ -1,6 +1,6 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
-metadata: 
+metadata:
   name: ingress-serv
   annotations:
     kubernetes.io/ingress.class: nginx
@@ -8,7 +8,7 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   rules:
-    - host: fotolicious.com
+    - host: www.cloudreel.live
 
       http:
         paths:
@@ -19,7 +19,7 @@ spec:
                 name: useraccmgmt-cluster-serv
                 port:
                   number: 4000
-          - path: /images
+          - path: /videos
             pathType: Prefix
             backend:
               service:
@@ -33,12 +33,32 @@ spec:
                 name: query-cluster-serv
                 port:
                   number: 4005
-          - path: /
+          - path: /logs
             pathType: Prefix
             backend:
               service:
-                name: frontend-cluster-serv
+                name: logging-cluster-serv
                 port:
-                  number: 3000
-
+                  number: 4003
+          - path: /storage
+            pathType: Prefix
+            backend:
+              service:
+                name: storagemgmt-cluster-serv
+                port:
+                  number: 4001
+          - path: /usagemonitoring
+            pathType: Prefix
+            backend:
+              service:
+                name: usagemntr-cluster-serv
+                port:
+                  number: 4004
+          - path: /events
+            pathType: Prefix
+            backend:
+              service:
+                name: eventbus-cluster-serv
+                port:
+                  number: 4010
 

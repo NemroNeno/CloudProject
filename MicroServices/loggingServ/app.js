@@ -10,7 +10,7 @@ const { Log } = require("./models/LogSchema");
 
 
 
-app.post("/events", async (req, res) => {
+app.post("/logs/events", async (req, res) => {
   console.log("Event Received:", req.body.type);
   const { type, data,clientIp } = req.body;
   if (type === "UserCreated") {

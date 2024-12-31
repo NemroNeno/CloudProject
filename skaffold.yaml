@@ -1,32 +1,22 @@
 apiVersion: skaffold/v2alpha3
 kind: Config
-metadata: 
+metadata:
   name: microservices-photogallery
-deploy: 
+deploy:
   kubectl: 
     manifests: 
       - ./k8s/*
-build: 
+build:
   googleCloudBuild: 
-    projectId: atomic-409916
-  artifacts: 
-    - image: us.gcr.io/atomic-409916/frontend
-      context: frontend
-      docker: 
-        dockerfile: Dockerfile
-      sync: 
-        manual: 
-          - src: "*"
-            dest: .
-    - image: us.gcr.io/atomic-409916/eventbus
+    projectId: forward-dream-436005-g7
+  artifacts:
+    - image: gcr.io/forward-dream-436005-g7/eventbusserv
       context: MicroServices/EventBusServ
-      docker: 
-        dockerfile: Dockerfile
       sync: 
-        manual: 
+        manual:
           - src: "*"
             dest: .
-    - image: us.gcr.io/atomic-409916/gallerymgmt
+    - image: gcr.io/forward-dream-436005-g7/gallerymgmtserv
       context: MicroServices/GalleryMgmtServ
       docker: 
         dockerfile: Dockerfile
@@ -34,7 +24,7 @@ build:
         manual: 
           - src: "*"
             dest: .
-    - image: us.gcr.io/atomic-409916/logging
+    - image: gcr.io/forward-dream-436005-g7/loggingserv
       context: MicroServices/loggingServ
       docker: 
         dockerfile: Dockerfile
@@ -42,7 +32,7 @@ build:
         manual: 
           - src: "*"
             dest: .
-    - image: us.gcr.io/atomic-409916/query
+    - image: gcr.io/forward-dream-436005-g7/queryserv
       context: MicroServices/QueryServ
       docker: 
         dockerfile: Dockerfile
@@ -50,7 +40,7 @@ build:
         manual: 
           - src: "*"
             dest: .
-    - image: us.gcr.io/atomic-409916/storagemgmt
+    - image: gcr.io/forward-dream-436005-g7/storagemgmtserv
       context: MicroServices/StorageMgmtServ
       docker: 
         dockerfile: Dockerfile
@@ -58,7 +48,7 @@ build:
         manual: 
           - src: "*"
             dest: .
-    - image: us.gcr.io/atomic-409916/usagemntr
+    - image: gcr.io/forward-dream-436005-g7/usagemntrserv
       context: MicroServices/UsageMntrServ
       docker: 
         dockerfile: Dockerfile
@@ -66,7 +56,7 @@ build:
         manual: 
           - src: "*"
             dest: .
-    - image: us.gcr.io/atomic-409916/useraccmgmt
+    - image: gcr.io/forward-dream-436005-g7/useraccmgmtserv
       context: MicroServices/UserAccMgmtServ
       docker: 
         dockerfile: Dockerfile

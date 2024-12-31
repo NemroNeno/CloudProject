@@ -12,8 +12,8 @@ app.use(cors());
 
 const videos = require("./routes/videos");
 
-app.use("/videos/", videos);
-app.post("/events", async (req, res) => {
+app.use("/videos", videos);
+app.post("/videos/events", async (req, res) => {
   console.log("Event Received:", req.body.type);
   const { type, data } = req.body;
 

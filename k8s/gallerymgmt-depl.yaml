@@ -12,9 +12,12 @@ spec:
       labels:
         app: gallerymgmt
     spec:
+      imagePullSecrets:
+        - name: gcr-json-key
       containers:
         - name: gallerymgmt
-          image: us.gcr.io/atomic-409916/gallerymgmt
+          image:  gcr.io/forward-dream-436005-g7/gallerymgmtserv:61b81a5-dirty@sha256:7d4746c1b60b9250c2eeed9ea91376a3b2579e6c7d772938389f56b0700d17ad
+          imagePullPolicy: Always
           ports:
             - containerPort: 4002
 ---

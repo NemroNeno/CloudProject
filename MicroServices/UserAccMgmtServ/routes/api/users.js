@@ -38,7 +38,7 @@ router.post("/register", async (req, res) => {
           process.env.JWT_SECRET
         );
         try{
-          console.log(newuser)
+          console.log(`New Request being sent to event service ${process.env.EVENT_SERV}/events`);
         await axios.post(`${process.env.EVENT_SERV}/events`, {
            type: "UserCreated",
            clientIp:clientIp,

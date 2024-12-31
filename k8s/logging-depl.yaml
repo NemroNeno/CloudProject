@@ -12,9 +12,11 @@ spec:
       labels:
         app: logging
     spec:
+      imagePullSecrets:
+        - name: gcr-json-key
       containers:
         - name: logging
-          image: us.gcr.io/atomic-409916/logging
+          image: gcr.io/forward-dream-436005-g7/loggingserv:61b81a5-dirty@sha256:2f5207ddad0b3fe0ec482aafebbe6e4759ca50389b35b43615a4e352bc90b880
           ports:
             - containerPort: 4003
 ---

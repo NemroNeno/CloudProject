@@ -12,9 +12,11 @@ spec:
       labels:
         app: storagemgmt
     spec:
+      imagePullSecrets:
+        - name: gcr-json-key
       containers:
         - name: storagemgmt
-          image: us.gcr.io/atomic-409916/storagemgmt
+          image: gcr.io/forward-dream-436005-g7/storagemgmtserv:61b81a5-dirty@sha256:96d95cd62060b139bc515bf8abcb1e7e904cf65aff9336aba09136e2b4eb7490
           ports:
             - containerPort: 4001
 ---

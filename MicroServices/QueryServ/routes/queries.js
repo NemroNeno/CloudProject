@@ -21,7 +21,7 @@ function verifyToken(req, res, next) {
 }
 
 //verifyToken,
-router.get("/:userId",  async (req, res) => {
+router.get("/:userId",verifyToken,  async (req, res) => {
   console.log(req);
   try {
         const userId = req.params.userId;
